@@ -22,23 +22,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	AuthenticationService authenticationService;
 
-@Override
-protected void configure(HttpSecurity http) throws Exception {
-	
-	.sessionManagement()
-	.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-	.and()
-	.authorizeRequests()
-	.antMatchers("/api/public/**")
-	.permitAll()
-	.anyRequest()
-	.authenticated()
-	.and()
-	.httpBasic()
-	.and()
-	.csrf()
-	.disable();
-}
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+				.antMatchers("/api/public/**").permitAll().anyRequest().authenticated().and().httpBasic().and().csrf()
+				.disable();
+	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
