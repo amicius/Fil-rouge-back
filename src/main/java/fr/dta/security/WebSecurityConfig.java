@@ -1,4 +1,4 @@
-package fr.dta.configuration;
+package fr.dta.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,11 +8,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import fr.dta.service.AuthenticationService;
+import fr.dta.entity.Credential;
 
 @Configuration
 @EnableWebSecurity
@@ -23,10 +22,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	AuthenticationService authenticationService;
 
 	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+		auth.inMemoryAuthentication().withUser("user").password("password").roles(Credential.ROLE_REGISTER.name());
+	}
+
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/api/public/**").permitAll().anyRequest().authenticated().and().httpBasic().and().csrf()
-				.disable();
+
+		http.csrf().disable().authorizeRequests().antMatchers("/index.html", "/", "/home", "/login").permitAll()
+				.anyRequest().authenticated().and().httpBasic();
 	}
 
 	@Bean

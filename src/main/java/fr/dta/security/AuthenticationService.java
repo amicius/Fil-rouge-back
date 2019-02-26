@@ -1,11 +1,10 @@
-package fr.dta.service;
+package fr.dta.security;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,11 +32,7 @@ public class AuthenticationService implements UserDetailsService {
 	}
 
 	private List<GrantedAuthority> getUserCredentials(UserLight user) {
-		List<GrantedAuthority> roles = new ArrayList<>();
 
-		String roleAsString = user.getCredential().name();
-		roles.add(new SimpleGrantedAuthority(roleAsString));
-
-		return roles;
+		return AuthorityUtils.createAuthorityList(user.getCredential().toString());
 	}
 }
