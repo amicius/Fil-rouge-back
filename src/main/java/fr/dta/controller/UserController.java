@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.dta.entity.UserLight;
+import fr.dta.entity.User;
 
 @RestController
 @CrossOrigin
 public class UserController {
 
 	@RequestMapping("/login")
-	public boolean login(@RequestBody UserLight user) {
+	public boolean login(@RequestBody User user) {
 
 		return user.getUsername().equals("user") && user.getPassword().equals("password");
 	}
