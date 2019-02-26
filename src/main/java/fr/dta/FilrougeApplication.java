@@ -9,5 +9,4 @@ public class FilrougeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FilrougeApplication.class, args);
 	}
-
 }

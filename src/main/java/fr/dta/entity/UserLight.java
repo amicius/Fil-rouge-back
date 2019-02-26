@@ -52,5 +52,4 @@ public class UserLight {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 }
