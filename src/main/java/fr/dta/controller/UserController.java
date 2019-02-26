@@ -5,21 +5,29 @@ import java.util.Base64;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.dta.entity.User;
+import fr.dta.entity.UserLight;
+import fr.dta.service.UserService;
 
 @RestController
 @CrossOrigin
 public class UserController {
 
-	@RequestMapping("/login")
-	public boolean login(@RequestBody User user) {
+	@Autowired
+	UserService userService;
 
-		return user.getUsername().equals("user") && user.getPassword().equals("password");
+	@RequestMapping("/login")
+	public ResponseEntity<?> login(@RequestBody UserLight user) {
+
+		// return user.getUsername().equals("user") &&
+		// user.getPassword().equals("password");
+		return userService.login(user);
 	}
 
 	@RequestMapping("/user")
@@ -28,4 +36,5 @@ public class UserController {
 		String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
 		return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
 	}
+
 }

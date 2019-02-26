@@ -8,10 +8,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import fr.dta.entity.Credential;
 
 @Configuration
 @EnableWebSecurity
@@ -22,27 +21,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	AuthenticationService authenticationService;
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-		auth.inMemoryAuthentication().withUser("user").password("password").roles(Credential.REGISTER.toString());
-	}
-
-	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
-		http.csrf().disable().authorizeRequests().antMatchers("/index.html", "/", "/home", "/login").permitAll()
-				.anyRequest().authenticated().and().httpBasic();
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and().csrf().disable()
+				.httpBasic();
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-
 		return new BCryptPasswordEncoder();
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
 		auth.userDetailsService(authenticationService).passwordEncoder(passwordEncoder());
 	}
 }

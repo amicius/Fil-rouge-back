@@ -19,5 +19,6 @@ public class StartupDataInit {
 	public void init() {
 
 		this.userRepository.save(new User("Corentin", "corentin", Credential.ADMIN));
+		this.userRepository.save(new User("Matthieu", "matthieu", Credential.REGISTER));
 	}
 }
