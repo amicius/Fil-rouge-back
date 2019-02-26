@@ -1,5 +1,5 @@
 package fr.dta.entity;
 
 public enum Credential {
-	ADMIN, REGISTER, VISITOR
+	ROLE_ADMIN, ROLE_REGISTER, ROLE_VISITOR
 }
