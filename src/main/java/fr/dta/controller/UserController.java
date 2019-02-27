@@ -17,23 +17,16 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping("/user")
+	@RequestMapping("/login")
 	public ResponseEntity<UserLight> login(@RequestBody UserLight user) {
 
 		return userService.login(user);
 	}
 
-//	@RequestMapping("/user")
-//	public Principal user(HttpServletRequest request) {
+//  @RequestMapping("/user")
+//  public Principal user(HttpServletRequest request) {
 //
-//		String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
-//		return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
-//	}
-
-//	@RequestMapping(method = RequestMethod.POST)
-//	@ResponseStatus(HttpStatus.CREATED)
-//	public void create(@RequestBody @Valid Game jeu) {
-//
-//		userService.save(jeu);
-//	}
+//      String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
+//      return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
+//  }
 }
