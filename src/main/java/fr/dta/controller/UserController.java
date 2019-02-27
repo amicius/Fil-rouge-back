@@ -23,7 +23,7 @@ public class UserController {
 	public ResponseEntity<UserLight> getUser(Principal principal) {
 
 		if (principal != null) {
-			UserLight user = userService.findByUsername(principal.getName());
+			UserLight user = userService.findByUsername(principal.getName()).toUserLight();
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		}
 		return ResponseEntity.badRequest().build();
