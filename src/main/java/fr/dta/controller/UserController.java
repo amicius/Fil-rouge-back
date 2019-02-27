@@ -25,8 +25,6 @@ public class UserController {
 	@RequestMapping("/login")
 	public ResponseEntity<?> login(@RequestBody UserLight user) {
 
-		// return user.getUsername().equals("user") &&
-		// user.getPassword().equals("password");
 		return userService.login(user);
 	}
 
@@ -36,5 +34,4 @@ public class UserController {
 		String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
 		return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
 	}
-
 }
