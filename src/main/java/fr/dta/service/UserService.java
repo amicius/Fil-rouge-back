@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import fr.dta.entity.Credential;
 import fr.dta.entity.UserLight;
 import fr.dta.repository.UserRepository;
 
@@ -15,13 +14,13 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	public ResponseEntity<Credential> login(UserLight user) {
+	public ResponseEntity<UserLight> login(UserLight user) {
 
 		if (this.userRepository.findByUsername(user.getUsername()) != null) {
 
 			UserLight foundUser = this.userRepository.findByUsername(user.getUsername());
 			if (foundUser.getPassword().equals(user.getPassword())) {
-				return new ResponseEntity<>(foundUser.getCredential(), HttpStatus.OK);
+				return new ResponseEntity<>(foundUser, HttpStatus.OK);
 			}
 		}
 		return ResponseEntity.badRequest().build();

@@ -6,15 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Jeu {
+public class Game {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String nom;
+	private String name;
 
-	private Plateforme plateforme;
+	private Plateform plateform;
 
 	private Genre genre;
 
