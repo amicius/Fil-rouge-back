@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Jeu {
+public class Game {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Jeu {
 	private String nom;
 	
 	@Column
-	private Plateforme plateforme;
+	private Plateform plateforme;
 	
 	@Column
 	private Genre genre;
