@@ -17,34 +17,34 @@ public class Game {
 
 	@Column(nullable = false)
 	private String nom;
-	
+
 	@Column
 	private Plateform plateforme;
-	
+
 	@Column
 	private Genre genre;
-	
+
 	@Column(nullable = false)
 	private double prix;
-	
+
 	@Column
 	private String image;
-	
+
 	@Column
 	private String description;
-	
+
 	@Column(nullable = false)
 	private String reference;
-	
+
 	@Column(nullable = false)
 	private int stock;
-	
+
 	@Column
 	private String editeur;
-	
+
 	@Column
 	private Date dateParution;
-	
+
 	@Column
 	private boolean actif;
 
@@ -146,22 +146,14 @@ public class Game {
 
 	public Game(int id, String nom, Plateform plateforme, Genre genre, double prix, String image, String description,
 			String reference, int stock, String editeur, Date dateParution, boolean actif) {
+
+		this(nom, plateforme, genre, prix, image, description, reference, stock, editeur, dateParution, actif);
 		this.id = id;
-		this.nom = nom;
-		this.plateforme = plateforme;
-		this.genre = genre;
-		this.prix = prix;
-		this.image = image;
-		this.description = description;
-		this.reference = reference;
-		this.stock = stock;
-		this.editeur = editeur;
-		this.dateParution = dateParution;
-		this.actif = actif;
 	}
 
 	public Game(String nom, Plateform plateforme, Genre genre, double prix, String image, String description,
 			String reference, int stock, String editeur, Date dateParution, boolean actif) {
+
 		this.nom = nom;
 		this.plateforme = plateforme;
 		this.genre = genre;
@@ -177,5 +169,4 @@ public class Game {
 
 	public Game() {
 	}
-	
 }

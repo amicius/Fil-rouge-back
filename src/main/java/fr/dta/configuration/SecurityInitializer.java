@@ -1,4 +1,4 @@
-package fr.dta.security;
+package fr.dta.configuration;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

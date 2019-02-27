@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import fr.dta.entity.User;
 import fr.dta.entity.UserLight;
 import fr.dta.repository.UserRepository;
 
@@ -24,5 +25,10 @@ public class UserService {
 			}
 		}
 		return ResponseEntity.badRequest().build();
+	}
+
+	public User findByUsername(String username) {
+
+		return userRepository.findByUsername(username);
 	}
 }

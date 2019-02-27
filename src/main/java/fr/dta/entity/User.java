@@ -19,4 +19,8 @@ public class User extends UserLight {
 		// TODO Auto-generated constructor stub
 	}
 
+	public UserLight toUserLight() {
+
+		return new UserLight(this.getUsername(), this.getPassword(), this.getCredential());
+	}
 }
