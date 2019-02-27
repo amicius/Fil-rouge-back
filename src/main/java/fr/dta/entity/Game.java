@@ -16,16 +16,16 @@ public class Game {
 	private int id;
 
 	@Column(nullable = false)
-	private String nom;
+	private String name;
 
 	@Column
-	private Plateform plateforme;
+	private Plateform plateform;
 
 	@Column
 	private Genre genre;
 
 	@Column(nullable = false)
-	private double prix;
+	private double price;
 
 	@Column
 	private String image;
@@ -40,13 +40,39 @@ public class Game {
 	private int stock;
 
 	@Column
-	private String editeur;
+	private String editor;
 
 	@Column
-	private Date dateParution;
+	private Date date;
 
 	@Column
-	private boolean actif;
+	private boolean active;
+
+	public Game() {
+	}
+
+	public Game(int id, String name, Plateform plateform, Genre genre, double price, String image, String description,
+			String reference, int stock, String editor, Date date, boolean active) {
+
+		this(name, plateform, genre, price, image, description, reference, stock, editor, date, active);
+		this.id = id;
+	}
+
+	public Game(String name, Plateform plateform, Genre genre, double price, String image, String description,
+			String reference, int stock, String editor, Date date, boolean active) {
+
+		this.name = name;
+		this.plateform = plateform;
+		this.genre = genre;
+		this.price = price;
+		this.image = image;
+		this.description = description;
+		this.reference = reference;
+		this.stock = stock;
+		this.editor = editor;
+		this.date = date;
+		this.active = active;
+	}
 
 	public int getId() {
 		return id;
@@ -56,20 +82,20 @@ public class Game {
 		this.id = id;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Plateform getPlateforme() {
-		return plateforme;
+	public Plateform getPlateform() {
+		return plateform;
 	}
 
-	public void setPlateforme(Plateform plateforme) {
-		this.plateforme = plateforme;
+	public void setPlateform(Plateform plateform) {
+		this.plateform = plateform;
 	}
 
 	public Genre getGenre() {
@@ -80,12 +106,12 @@ public class Game {
 		this.genre = genre;
 	}
 
-	public double getPrix() {
-		return prix;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setPrix(double prix) {
-		this.prix = prix;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public String getImage() {
@@ -120,53 +146,27 @@ public class Game {
 		this.stock = stock;
 	}
 
-	public String getEditeur() {
-		return editeur;
+	public String getEditor() {
+		return editor;
 	}
 
-	public void setEditeur(String editeur) {
-		this.editeur = editeur;
+	public void setEditor(String editor) {
+		this.editor = editor;
 	}
 
-	public Date getDateParution() {
-		return dateParution;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setDateParution(Date dateParution) {
-		this.dateParution = dateParution;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
-	public boolean isActif() {
-		return actif;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setActif(boolean actif) {
-		this.actif = actif;
-	}
-
-	public Game(int id, String nom, Plateform plateforme, Genre genre, double prix, String image, String description,
-			String reference, int stock, String editeur, Date dateParution, boolean actif) {
-
-		this(nom, plateforme, genre, prix, image, description, reference, stock, editeur, dateParution, actif);
-		this.id = id;
-	}
-
-	public Game(String nom, Plateform plateforme, Genre genre, double prix, String image, String description,
-			String reference, int stock, String editeur, Date dateParution, boolean actif) {
-
-		this.nom = nom;
-		this.plateforme = plateforme;
-		this.genre = genre;
-		this.prix = prix;
-		this.image = image;
-		this.description = description;
-		this.reference = reference;
-		this.stock = stock;
-		this.editeur = editeur;
-		this.dateParution = dateParution;
-		this.actif = actif;
-	}
-
-	public Game() {
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 }
