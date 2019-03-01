@@ -1,7 +1,5 @@
 package fr.dta.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import fr.dta.entity.Game;
 import fr.dta.entity.GameLight;
+import fr.dta.entity.GamePaging;
 import fr.dta.repository.GameRepository;
 import fr.dta.repository.GameRepositoryImpl;
 
@@ -27,12 +26,17 @@ public class GameService {
 	}
 
 	// @PreAuthorize("hasAuthority('ADMIN')")
-	public ResponseEntity<List<Game>> findGames(int start, GameLight game) {
+	public ResponseEntity<GamePaging> findGames(int page, GameLight game) {
 
-		List<Game> foundGame = gameRepositoryImpl.findGames(1, game);
+		GamePaging foundGame = gameRepositoryImpl.findGames(page, game);
 		if (foundGame != null) {
 			return new ResponseEntity<>(foundGame, HttpStatus.OK);
 		}
 		return ResponseEntity.badRequest().build();
+	}
+
+	public Game updateScore(Game game) {
+
+		return gameRepository.save(game);
 	}
 }
