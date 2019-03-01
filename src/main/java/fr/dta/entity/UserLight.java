@@ -1,5 +1,6 @@
 package fr.dta.entity;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,10 +13,13 @@ public class UserLight {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Column(nullable = false)
 	private String username;
 
+	@Column(nullable = false)
 	private String password;
 
+	@Column
 	private Credential credential;
 
 	public UserLight() {

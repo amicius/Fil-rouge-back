@@ -6,9 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.entity.Game;
+import fr.dta.entity.GameLight;
 import fr.dta.service.GameService;
 
 @RestController
@@ -31,10 +31,10 @@ public class GameController {
 		gameService.save(game);
 	}
 
-	@GetMapping
-	@PreAuthorize("hasAuthority('ADMIN')")
-	public List<Game> findAll(int start) {
-		
-		return this.gameService.findAll(start);
+	@PostMapping("/game")
+	// @PreAuthorize("hasAuthority('ADMIN')")
+	public ResponseEntity<List<Game>> findGames(@RequestBody GameLight game) {
+
+		return this.gameService.findGames(1, game);
 	}
 }
