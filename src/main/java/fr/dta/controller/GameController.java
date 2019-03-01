@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,14 +28,13 @@ public class GameController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody @Valid Game game) {
-
 		gameService.save(game);
 	}
 
 	@GetMapping
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public List<Game> findAll(int start) {
-
+		
 		return this.gameService.findAll(start);
 	}
 }
