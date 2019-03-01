@@ -1,11 +1,9 @@
 package fr.dta.repository;
 
-import java.util.List;
-
-import fr.dta.entity.Game;
 import fr.dta.entity.GameLight;
+import fr.dta.entity.GamePaging;
 
 public interface GameRepositoryCustom {
 
-	List<Game> findGames(int start, GameLight game);
+	GamePaging findGames(int start, GameLight game);
 }

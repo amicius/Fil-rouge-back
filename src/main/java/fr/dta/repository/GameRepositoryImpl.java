@@ -1,7 +1,5 @@
 package fr.dta.repository;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -16,6 +14,7 @@ import org.springframework.util.StringUtils;
 
 import fr.dta.entity.Game;
 import fr.dta.entity.GameLight;
+import fr.dta.entity.GamePaging;
 
 @Repository
 public class GameRepositoryImpl implements GameRepositoryCustom {
@@ -29,11 +28,12 @@ public class GameRepositoryImpl implements GameRepositoryCustom {
 
 	@Override
 	// @PreAuthorize("hasAuthority('ADMIN')")
-	public List<Game> findGames(int numPage, GameLight game) {
+	public GamePaging findGames(int page, GameLight game) {
 
+		GamePaging foundGames;
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Game> query = builder.createQuery(Game.class);
-		Root<Game> root = query.from(Game.class);
+		CriteriaQuery<GameLight> query = builder.createQuery(GameLight.class);
+		Root<GameLight> root = query.from(GameLight.class);
 
 		Predicate namePredicate = builder.and();
 		Predicate plateformPredicate = builder.and();
@@ -57,9 +57,11 @@ public class GameRepositoryImpl implements GameRepositoryCustom {
 
 		query.where(builder.and(namePredicate, plateformPredicate, pricePredicate, referencePredicate));
 
-		TypedQuery<Game> gameQuery = entityManager.createQuery(query);
-		gameQuery.setFirstResult((numPage - 1) * 10);
+		TypedQuery<GameLight> gameQuery = entityManager.createQuery(query);
+		gameQuery.setFirstResult((page - 1) * 10);
 		gameQuery.setMaxResults(10);
-		return gameQuery.getResultList();
+
+		foundGames = new GamePaging(gameQuery.getResultList().size(), gameQuery.getResultList());
+		return foundGames;
 	}
 }
