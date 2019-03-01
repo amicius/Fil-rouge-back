@@ -28,7 +28,6 @@ public class GameController {
 	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody @Valid Game game) {
-
 		gameService.save(game);
 	}
 
