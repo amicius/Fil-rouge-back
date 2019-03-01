@@ -4,8 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "game")
 public class Game extends GameLight {
 
 	@Column
@@ -32,10 +34,10 @@ public class Game extends GameLight {
 	public Game() {
 	}
 
-	public Game(String name, Plateform plateform, Genre genre, long price, String image, String description,
-			String reference, int stock, String editor, Date date, boolean active) {
+	public Game(String name, Plateform plateform, Genre genre, long price, String image, String description, int stock,
+			String editor, Date date, boolean active) {
 
-		super(name, plateform, price, reference);
+		super(name, plateform, price);
 		this.genre = genre;
 		this.image = image;
 		this.description = description;

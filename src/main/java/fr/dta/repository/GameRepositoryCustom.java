@@ -1,9 +1,12 @@
 package fr.dta.repository;
 
-import fr.dta.entity.GameLight;
-import fr.dta.entity.GamePaging;
+import org.springframework.stereotype.Repository;
 
+import fr.dta.entity.GamePaging;
+import fr.dta.entity.PostGame;
+
+@Repository
 public interface GameRepositoryCustom {
 
-	GamePaging findGames(int start, GameLight game);
+	GamePaging findGames(int start, PostGame game);
 }

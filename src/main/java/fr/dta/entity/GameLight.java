@@ -11,7 +11,7 @@ public class GameLight {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(nullable = false)
 	private String name;
@@ -28,28 +28,30 @@ public class GameLight {
 	public GameLight() {
 	}
 
-	public GameLight(String name, Plateform plateform, long price, String reference) {
+	public GameLight(String name, Plateform plateform, long price) {
+
 		super();
 		this.name = name;
 		this.plateform = plateform;
 		this.price = price;
-		this.reference = reference;
+		this.reference = this.id.toString() + "_" + this.name;
 	}
 
-	public GameLight(int id, String name, Plateform plateform, long price, String reference) {
+	public GameLight(Integer id, String name, Plateform plateform, long price) {
+
 		super();
 		this.id = id;
 		this.name = name;
 		this.plateform = plateform;
 		this.price = price;
-		this.reference = reference;
+		this.reference = this.id.toString() + "_" + this.name;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

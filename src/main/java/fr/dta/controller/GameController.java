@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.entity.Game;
-import fr.dta.entity.GameLight;
 import fr.dta.entity.GamePaging;
+import fr.dta.entity.PostGame;
 import fr.dta.service.GameService;
 
 @RestController
@@ -25,7 +25,7 @@ public class GameController {
 	@Autowired
 	GameService gameService;
 
-	@PostMapping
+	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody @Valid Game game) {
 		gameService.save(game);
@@ -33,9 +33,9 @@ public class GameController {
 
 	@PostMapping("/game")
 	// @PreAuthorize("hasAuthority('ADMIN')")
-	public ResponseEntity<GamePaging> findGames(HttpServletRequest request, @RequestBody GameLight game) {
+	public ResponseEntity<GamePaging> findGames(HttpServletRequest request, @RequestBody PostGame game) {
 
-		int page = Integer.parseInt(request.getHeader("page"));
+		Integer page = Integer.parseInt(request.getHeader("page"));
 		return this.gameService.findGames(page, game);
 	}
 

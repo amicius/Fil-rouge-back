@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import fr.dta.entity.Game;
-import fr.dta.entity.GameLight;
 import fr.dta.entity.GamePaging;
+import fr.dta.entity.PostGame;
 import fr.dta.repository.GameRepository;
 import fr.dta.repository.GameRepositoryImpl;
 
@@ -26,7 +26,7 @@ public class GameService {
 	}
 
 	// @PreAuthorize("hasAuthority('ADMIN')")
-	public ResponseEntity<GamePaging> findGames(int page, GameLight game) {
+	public ResponseEntity<GamePaging> findGames(int page, PostGame game) {
 
 		GamePaging foundGame = gameRepositoryImpl.findGames(page, game);
 		if (foundGame != null) {

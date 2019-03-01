@@ -13,8 +13,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import fr.dta.entity.Game;
-import fr.dta.entity.GameLight;
 import fr.dta.entity.GamePaging;
+import fr.dta.entity.PostGame;
 
 @Repository
 public class GameRepositoryImpl implements GameRepositoryCustom {
@@ -28,12 +28,12 @@ public class GameRepositoryImpl implements GameRepositoryCustom {
 
 	@Override
 	// @PreAuthorize("hasAuthority('ADMIN')")
-	public GamePaging findGames(int page, GameLight game) {
+	public GamePaging findGames(int page, PostGame game) {
 
 		GamePaging foundGames;
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<GameLight> query = builder.createQuery(GameLight.class);
-		Root<GameLight> root = query.from(GameLight.class);
+		CriteriaQuery<Game> query = builder.createQuery(Game.class);
+		Root<Game> root = query.from(Game.class);
 
 		Predicate namePredicate = builder.and();
 		Predicate plateformPredicate = builder.and();
@@ -57,7 +57,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom {
 
 		query.where(builder.and(namePredicate, plateformPredicate, pricePredicate, referencePredicate));
 
-		TypedQuery<GameLight> gameQuery = entityManager.createQuery(query);
+		TypedQuery<Game> gameQuery = entityManager.createQuery(query);
 		gameQuery.setFirstResult((page - 1) * 10);
 		gameQuery.setMaxResults(10);
 
