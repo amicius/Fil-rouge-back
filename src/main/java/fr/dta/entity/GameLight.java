@@ -28,23 +28,23 @@ public class GameLight {
 	public GameLight() {
 	}
 
-	public GameLight(String name, Plateform plateform, long price, String reference) {
+	public GameLight(String name, Plateform plateform, long price) {
 
 		super();
 		this.name = name;
 		this.plateform = plateform;
 		this.price = price;
-		this.reference = reference;
+		this.reference = this.id.toString() + "_" + this.name;
 	}
 
-	public GameLight(Integer id, String name, Plateform plateform, long price, String reference) {
+	public GameLight(Integer id, String name, Plateform plateform, long price) {
 
 		super();
 		this.id = id;
 		this.name = name;
 		this.plateform = plateform;
 		this.price = price;
-		this.reference = reference;
+		this.reference = this.id.toString() + "_" + this.name;
 	}
 
 	public Integer getId() {
