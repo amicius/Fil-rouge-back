@@ -5,12 +5,12 @@ import java.util.List;
 public class GamePaging {
 
 	private int pages;
-	private List<GameLight> games;
+	private List<Game> games;
 
 	public GamePaging() {
 	}
 
-	public GamePaging(int pages, List<GameLight> games) {
+	public GamePaging(int pages, List<Game> games) {
 		super();
 		this.pages = pages;
 		this.games = games;
@@ -24,11 +24,11 @@ public class GamePaging {
 		this.pages = pages;
 	}
 
-	public List<GameLight> getGames() {
+	public List<Game> getGames() {
 		return games;
 	}
 
-	public void setGames(List<GameLight> games) {
+	public void setGames(List<Game> games) {
 		this.games = games;
 	}
 }
