@@ -88,6 +88,6 @@ public class GameLight {
 	}
 
 	public void setReference() {
-		this.reference = this.id + "_" + this.name.trim();
+		this.reference = this.id + "_" + this.name.toLowerCase().replaceAll(" ", "_");
 	}
 }
