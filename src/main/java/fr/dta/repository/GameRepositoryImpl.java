@@ -58,10 +58,11 @@ public class GameRepositoryImpl implements GameRepositoryCustom {
 		query.where(builder.and(namePredicate, plateformPredicate, pricePredicate, referencePredicate));
 
 		TypedQuery<Game> gameQuery = entityManager.createQuery(query);
+		int pages = gameQuery.getResultList().size();
 		gameQuery.setFirstResult((page - 1) * 10);
 		gameQuery.setMaxResults(10);
 
-		foundGames = new GamePaging(gameQuery.getResultList().size(), gameQuery.getResultList());
+		foundGames = new GamePaging(pages, gameQuery.getResultList());
 		return foundGames;
 	}
 }
