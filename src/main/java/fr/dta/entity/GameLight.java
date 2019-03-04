@@ -45,6 +45,12 @@ public class GameLight {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "GameLight [id=" + id + ", name=" + name + ", plateform=" + plateform + ", price=" + price
+				+ ", reference=" + reference + "]";
+	}
+
 	public Integer getId() {
 		return id;
 	}

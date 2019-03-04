@@ -47,6 +47,12 @@ public class Game extends GameLight {
 		this.active = active;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + "Game [genre=" + genre + ", image=" + image + ", description=" + description
+				+ ", stock=" + stock + ", editor=" + editor + ", date=" + date + ", active=" + active + "]";
+	}
+
 	public Genre getGenre() {
 		return genre;
 	}

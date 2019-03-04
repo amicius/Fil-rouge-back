@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,11 +53,17 @@ public class GameController {
 		return this.gameService.update(game);
 	}
 
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	// @PreAuthorize("hasAuthority('ADMIN')")
-	public void deleteGame(@RequestBody int id) {
+	public void deleteGame(@PathVariable int id) {
 
 		this.gameService.delete(id);
+	}
+
+	@GetMapping("/{id}")
+	// @PreAuthorize("hasAuthority('ADMIN')")
+	public Game findGame(@PathVariable Integer id) {
+		return this.gameService.findGame(id);
 	}
 
 }
