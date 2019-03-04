@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,7 +30,6 @@ public class GameController {
 	GameService gameService;
 
 	@PostMapping
-	// @PreAuthorize("hasAuthority('REGISTER')")
 	// @PreAuthorize("hasAuthority('ADMIN')")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody @Valid Game game) {
@@ -60,10 +58,10 @@ public class GameController {
 		this.gameService.delete(id);
 	}
 
-	@GetMapping("/{id}")
+	@PutMapping("/activation")
 	// @PreAuthorize("hasAuthority('ADMIN')")
-	public Game findGame(@PathVariable Integer id) {
-		return this.gameService.findGame(id);
-	}
+	public Game activateDeactivateGame(@RequestBody Game game) {
 
+		return this.gameService.activateDeactivateGame(game);
+	}
 }

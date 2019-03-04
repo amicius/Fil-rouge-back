@@ -37,15 +37,15 @@ public class StartupDataInit {
 		gameRepository.save(new Game("Chevaliers du Zodiaque", Plateform.NES, Genre.AVENTURE, 10, "image1",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameRepository.save(new Game("Tintin", Plateform.MEGA_DRIVE, Genre.PLATEFORME, 10, "image2",
-				"Ceci est une description", 5, "Unbisoft", new Date(), true));
+				"Ceci est une description", 5, "Unbisoft", new Date(), false));
 		gameRepository.save(new Game("Last Battle", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10, "image3",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameRepository.save(new Game("Dark Castle", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10, "image4",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameRepository.save(new Game("Sword of Sodan", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10, "image5",
-				"Ceci est une description", 5, "Unbisoft", new Date(), true));
+				"Ceci est une description", 5, "Unbisoft", new Date(), false));
 		gameRepository.save(new Game("DragonBall", Plateform.NES, Genre.RPG, 10, "image6", "Ceci est une description",
-				5, "Unbisoft", new Date(), true));
+				5, "Unbisoft", new Date(), false));
 		gameRepository.save(new Game("Ultraman", Plateform.GAMEBOY, Genre.AVENTURE, 10, "image7",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameRepository.save(new Game("007 Junior", Plateform.SUPER_NINTENDO, Genre.PLATEFORME, 10, "image8",

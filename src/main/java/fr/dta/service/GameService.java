@@ -47,7 +47,9 @@ public class GameService {
 		gameRepository.deleteById(id);
 	}
 
-	public Game findGame(Integer id) {
-		return gameRepository.findById(id).get();
+	public Game activateDeactivateGame(Game game) {
+
+		game.setActive(!game.getActive());
+		return gameRepository.save(game);
 	}
 }

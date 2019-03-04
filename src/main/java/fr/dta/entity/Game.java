@@ -101,7 +101,7 @@ public class Game extends GameLight {
 		this.date = date;
 	}
 
-	public boolean isActive() {
+	public boolean getActive() {
 		return active;
 	}
 
