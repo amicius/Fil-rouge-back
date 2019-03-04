@@ -29,6 +29,8 @@ public class GameController {
 	GameService gameService;
 
 	@PostMapping
+	// @PreAuthorize("hasAuthority('REGISTER')")
+	// @PreAuthorize("hasAuthority('ADMIN')")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody @Valid Game game) {
 		gameService.save(game);
@@ -43,14 +45,17 @@ public class GameController {
 	}
 
 	@PutMapping
+	// @PreAuthorize("hasAuthority('ADMIN')")
 	public Game updateGame(@RequestBody Game game) {
 
 		return this.gameService.update(game);
 	}
 
 	@DeleteMapping
+	// @PreAuthorize("hasAuthority('ADMIN')")
 	public void deleteGame(@RequestBody int id) {
 
 		this.gameService.delete(id);
 	}
+
 }

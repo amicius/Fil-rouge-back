@@ -47,9 +47,9 @@ public class GameRepositoryImpl implements GameRepositoryCustom {
 			plateformPredicate = builder.like(builder.upper(root.get("plateform")),
 					"%" + game.getPlateform().toString() + "%");
 		}
-		if (!StringUtils.isEmpty((game.getPrice()))) {
-			pricePredicate = builder.like(builder.upper(root.get("price")), "%" + game.getPrice() + "%");
-		}
+//		if (!StringUtils.isEmpty((game.getPrice()))) {
+//			pricePredicate = builder.like(builder.upper(root.get("price")), "%" + game.getPrice().toString() + "%");
+//		}
 		if (!StringUtils.isEmpty(game.getReference())) {
 			referencePredicate = builder.like(builder.upper(root.get("reference")),
 					"%" + game.getReference().toUpperCase() + "%");

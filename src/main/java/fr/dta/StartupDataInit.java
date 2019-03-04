@@ -36,7 +36,7 @@ public class StartupDataInit {
 
 		gameRepository.save(new Game("Chevaliers du Zodiaque", Plateform.NES, Genre.AVENTURE, 10, "image1",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
-		gameRepository.save(new Game("Titin", Plateform.MEGA_DRIVE, Genre.PLATEFORME, 10, "image2",
+		gameRepository.save(new Game("Tintin", Plateform.MEGA_DRIVE, Genre.PLATEFORME, 10, "image2",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameRepository.save(new Game("Last Battle", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10, "image3",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
