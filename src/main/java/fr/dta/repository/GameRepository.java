@@ -6,4 +6,6 @@ import fr.dta.entity.Game;
 
 public interface GameRepository extends JpaRepository<Game, Integer> {
 
+	Game findByActive(boolean active);
+
 }

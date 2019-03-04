@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,14 +31,14 @@ public class GameController {
 	GameService gameService;
 
 	@PostMapping
-	// @PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody @Valid Game game) {
 		gameService.save(game);
 	}
 
 	@PostMapping("/search")
-	// @PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<GamePaging> findGames(HttpServletRequest request, @RequestBody PostGame game) {
 
 		Integer page = Integer.parseInt(request.getHeader("page"));
@@ -45,21 +46,21 @@ public class GameController {
 	}
 
 	@PutMapping
-	// @PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public Game updateGame(@RequestBody Game game) {
 
 		return this.gameService.update(game);
 	}
 
 	@DeleteMapping("/{id}")
-	// @PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public void deleteGame(@PathVariable int id) {
 
 		this.gameService.delete(id);
 	}
 
 	@PutMapping("/activation")
-	// @PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public Game activateDeactivateGame(@RequestBody Game game) {
 
 		return this.gameService.activateDeactivateGame(game);

@@ -52,4 +52,13 @@ public class GameService {
 		game.setActive(!game.getActive());
 		return gameRepository.save(game);
 	}
+
+	public ResponseEntity<GamePaging> findAllGames(Integer page) {
+
+		GamePaging foundGame = gameRepositoryImpl.findAllGames(page);
+		if (foundGame != null) {
+			return new ResponseEntity<>(foundGame, HttpStatus.OK);
+		}
+		return ResponseEntity.badRequest().build();
+	}
 }
