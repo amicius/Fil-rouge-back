@@ -22,6 +22,8 @@ public class GameService {
 
 	public Game save(Game game) {
 
+		gameRepository.save(game);
+		game.setReference();
 		return gameRepository.save(game);
 	}
 
@@ -38,5 +40,10 @@ public class GameService {
 	public Game updateScore(Game game) {
 
 		return gameRepository.save(game);
+	}
+
+	public void delete(int id) {
+
+		gameRepository.deleteById(id);
 	}
 }

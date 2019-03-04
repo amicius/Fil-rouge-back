@@ -34,7 +34,6 @@ public class GameLight {
 		this.name = name;
 		this.plateform = plateform;
 		this.price = price;
-		this.reference = "ref_" + this.name.trim();
 	}
 
 	public GameLight(Integer id, String name, Plateform plateform, long price) {
@@ -44,7 +43,6 @@ public class GameLight {
 		this.name = name;
 		this.plateform = plateform;
 		this.price = price;
-		this.reference = "ref_" + this.name.trim();
 	}
 
 	public Integer getId() {
@@ -83,7 +81,7 @@ public class GameLight {
 		return reference;
 	}
 
-	public void setReference(String reference) {
-		this.reference = reference;
+	public void setReference() {
+		this.reference = this.id + "_" + this.name.trim();
 	}
 }
