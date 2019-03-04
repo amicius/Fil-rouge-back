@@ -22,7 +22,7 @@ public class GameLight {
 	@Column(nullable = false)
 	private long price;
 
-	@Column(nullable = false)
+	@Column
 	private String reference;
 
 	public GameLight() {

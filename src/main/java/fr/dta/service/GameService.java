@@ -37,7 +37,7 @@ public class GameService {
 		return ResponseEntity.badRequest().build();
 	}
 
-	public Game updateScore(Game game) {
+	public Game update(Game game) {
 
 		return gameRepository.save(game);
 	}

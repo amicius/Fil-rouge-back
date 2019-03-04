@@ -6,14 +6,14 @@ public class PostGame {
 
 	private String plateform;
 
-	private Integer price;
+	private String price;
 
 	private String reference;
 
 	public PostGame() {
 	}
 
-	public PostGame(String name, String plateform, Integer price, String reference) {
+	public PostGame(String name, String plateform, String price, String reference) {
 		super();
 		this.name = name;
 		this.plateform = plateform;
@@ -37,11 +37,11 @@ public class PostGame {
 		this.plateform = plateform;
 	}
 
-	public long getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

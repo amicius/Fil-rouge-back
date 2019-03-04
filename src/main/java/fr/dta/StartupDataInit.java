@@ -31,8 +31,8 @@ public class StartupDataInit {
 	@EventListener(ContextRefreshedEvent.class)
 	public void init() {
 
-		userRepository.save(new User("Corentin", passwordEncoder.encode("corentin"), Credential.ADMIN));
-		userRepository.save(new User("Matthieu", passwordEncoder.encode("matthieu"), Credential.REGISTER));
+		userRepository.save(new User("admin", passwordEncoder.encode("admin"), Credential.ADMIN));
+		userRepository.save(new User("register", passwordEncoder.encode("register"), Credential.REGISTER));
 
 		gameRepository.save(new Game("Chevaliers du Zodiaque", Plateform.NES, Genre.AVENTURE, 10, "image1",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));

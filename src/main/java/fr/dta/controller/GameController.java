@@ -45,7 +45,7 @@ public class GameController {
 	@PutMapping
 	public Game updateGame(@RequestBody Game game) {
 
-		return this.gameService.updateScore(game);
+		return this.gameService.update(game);
 	}
 
 	@DeleteMapping
