@@ -4,19 +4,22 @@ public class PostGame {
 
 	private String name;
 
-	private String plateform;
+	private Plateform plateform;
 
 	private String price;
 
 	private String reference;
 
+	private Genre genre;
+
 	public PostGame() {
 	}
 
-	public PostGame(String name, String plateform, String price, String reference) {
+	public PostGame(String name, Plateform plateform, Genre genre, String price, String reference) {
 		super();
 		this.name = name;
 		this.plateform = plateform;
+		this.genre = genre;
 		this.price = price;
 		this.reference = reference;
 	}
@@ -29,12 +32,20 @@ public class PostGame {
 		this.name = name;
 	}
 
-	public String getPlateform() {
+	public Plateform getPlateform() {
 		return plateform;
 	}
 
-	public void setPlateform(String plateform) {
+	public void setPlateform(Plateform plateform) {
 		this.plateform = plateform;
+	}
+
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
 	}
 
 	public String getPrice() {

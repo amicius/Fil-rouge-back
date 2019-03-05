@@ -61,4 +61,13 @@ public class GameService {
 		}
 		return ResponseEntity.badRequest().build();
 	}
+
+	public ResponseEntity<GamePaging> findGamesVisitor(Integer page, PostGame game) {
+
+		GamePaging foundGame = gameRepositoryImpl.findGamesVisitor(page, game);
+		if (foundGame != null) {
+			return new ResponseEntity<>(foundGame, HttpStatus.OK);
+		}
+		return ResponseEntity.badRequest().build();
+	}
 }

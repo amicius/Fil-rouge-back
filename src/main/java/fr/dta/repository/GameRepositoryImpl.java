@@ -87,4 +87,38 @@ public class GameRepositoryImpl implements GameRepositoryCustom {
 		foundGames = new GamePaging(pages, gameQuery.getResultList());
 		return foundGames;
 	}
+
+	public GamePaging findGamesVisitor(Integer page, PostGame game) {
+
+		GamePaging foundGames;
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Game> query = builder.createQuery(Game.class);
+		Root<Game> root = query.from(Game.class);
+
+		Predicate namePredicate = builder.and();
+		Predicate plateformPredicate = builder.and();
+		Predicate genrePredicate = builder.and();
+		Predicate activePredicate = builder.and();
+
+		if (!StringUtils.isEmpty(game.getName())) {
+			namePredicate = builder.like(builder.upper(root.get("name")), "%" + game.getName().toUpperCase() + "%");
+		}
+		if (!StringUtils.isEmpty(game.getPlateform())) {
+			plateformPredicate = builder.equal(builder.upper(root.get("plateform")), game.getPlateform());
+		}
+		if (!StringUtils.isEmpty(game.getGenre())) {
+			genrePredicate = builder.equal(builder.upper(root.get("genre")), game.getGenre());
+		}
+		activePredicate = builder.isTrue(root.get("active"));
+
+		query.where(builder.and(namePredicate, plateformPredicate, genrePredicate, activePredicate));
+
+		TypedQuery<Game> gameQuery = entityManager.createQuery(query);
+		int pages = gameQuery.getResultList().size();
+		gameQuery.setFirstResult((page - 1) * 10);
+		gameQuery.setMaxResults(10);
+
+		foundGames = new GamePaging(pages, gameQuery.getResultList());
+		return foundGames;
+	}
 }

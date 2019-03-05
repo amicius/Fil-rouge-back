@@ -37,7 +37,7 @@ public class StartupDataInit {
 		gameService.save(new Game("Chevaliers du Zodiaque", Plateform.NES, Genre.AVENTURE, 10,
 				"http://image.jeuxvideo.com/images-sm/ns/s/s/ssodns0f.jpg", "Ceci est une description", 5, "Unbisoft",
 				new Date(), true));
-		gameService.save(new Game("Tintin", Plateform.MEGA_DRIVE, Genre.PLATEFORME, 10,
+		gameService.save(new Game("Tintin", Plateform.MEGA_DRIVE, Genre.ARCADE, 10,
 				"http://image.jeuxvideo.com/images/mg/t/i/tintmg0f.jpg", "Ceci est une description", 5, "Unbisoft",
 				new Date(), true));
 		gameService.save(new Game("Last Battle", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10,
@@ -51,7 +51,7 @@ public class StartupDataInit {
 				"Unbisoft", new Date(), false));
 		gameService.save(new Game("Ultraman", Plateform.GAMEBOY, Genre.AVENTURE, 10, "image7",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
-		gameService.save(new Game("007 Junior", Plateform.SUPER_NINTENDO, Genre.PLATEFORME, 10, "image8",
+		gameService.save(new Game("007 Junior", Plateform.SUPER_NINTENDO, Genre.ARCADE, 10, "image8",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameService.save(new Game("Schtroumpfs", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10, "image9",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
@@ -61,15 +61,15 @@ public class StartupDataInit {
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameService.save(new Game("Total Recall", Plateform.NES, Genre.AVENTURE, 10, "image12",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
-		gameService.save(new Game("Jurassic Park", Plateform.PLAYSTATION, Genre.PLATEFORME, 10, "image13",
+		gameService.save(new Game("Jurassic Park", Plateform.PLAYSTATION, Genre.ARCADE, 10, "image13",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameService.save(new Game("Tortue Ninja", Plateform.NES, Genre.AVENTURE, 10, "image14",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameService.save(new Game("E.T", Plateform.GAMEBOY, Genre.AVENTURE, 10, "image15", "Ceci est une description",
 				5, "Unbisoft", new Date(), true));
-		gameService.save(new Game("Dragon's Lair", Plateform.NES, Genre.PLATEFORME, 10, "image16",
+		gameService.save(new Game("Dragon's Lair", Plateform.NES, Genre.ARCADE, 10, "image16",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
-		gameService.save(new Game("Captain Planet", Plateform.GAMEBOY, Genre.PLATEFORME, 10, "image17",
+		gameService.save(new Game("Captain Planet", Plateform.GAMEBOY, Genre.ARCADE, 10, "image17",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 	}
 }
