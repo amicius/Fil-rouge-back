@@ -34,12 +34,15 @@ public class StartupDataInit {
 		userRepository.save(new User("admin", passwordEncoder.encode("admin"), Credential.ADMIN));
 		userRepository.save(new User("register", passwordEncoder.encode("register"), Credential.REGISTER));
 
-		gameService.save(new Game("Chevaliers du Zodiaque", Plateform.NES, Genre.AVENTURE, 10, "image1",
-				"Ceci est une description", 5, "Unbisoft", new Date(), true));
-		gameService.save(new Game("Tintin", Plateform.MEGA_DRIVE, Genre.PLATEFORME, 10, "image2",
-				"Ceci est une description", 5, "Unbisoft", new Date(), false));
-		gameService.save(new Game("Last Battle", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10, "image3",
-				"Ceci est une description", 5, "Unbisoft", new Date(), true));
+		gameService.save(new Game("Chevaliers du Zodiaque", Plateform.NES, Genre.AVENTURE, 10,
+				"http://image.jeuxvideo.com/images-sm/ns/s/s/ssodns0f.jpg", "Ceci est une description", 5, "Unbisoft",
+				new Date(), true));
+		gameService.save(new Game("Tintin", Plateform.MEGA_DRIVE, Genre.PLATEFORME, 10,
+				"http://image.jeuxvideo.com/images/mg/t/i/tintmg0f.jpg", "Ceci est une description", 5, "Unbisoft",
+				new Date(), true));
+		gameService.save(new Game("Last Battle", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10,
+				"http://image.jeuxvideo.com/images/mg/l/a/labamg0f.jpg", "Ceci est une description", 5, "Unbisoft",
+				new Date(), true));
 		gameService.save(new Game("Dark Castle", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10, "image4",
 				"Ceci est une description", 5, "Unbisoft", new Date(), true));
 		gameService.save(new Game("Sword of Sodan", Plateform.MEGA_DRIVE, Genre.AVENTURE, 10, "image5",
