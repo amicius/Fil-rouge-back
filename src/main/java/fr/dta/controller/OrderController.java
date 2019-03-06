@@ -26,7 +26,7 @@ public class OrderController {
 	OrderService orderService;
 
 	@PostMapping
-	@PreAuthorize("hasAuthority('REGISTER')")
+	@PreAuthorize("hasAuthority('REGISTER') OR hasAuthority('ADMIN')")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody @Valid Order order) {
 		orderService.save(order);

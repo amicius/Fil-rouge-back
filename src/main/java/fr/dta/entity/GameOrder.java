@@ -35,6 +35,20 @@ public class GameOrder {
 		this.quantity = quantity;
 	}
 
+	public Game getGame() {
+		if (this.id != null) {
+			return this.id.getGame();
+		}
+		return null;
+	}
+
+	public void setGame(Game game) {
+		if (this.id == null) {
+			this.id = new GameOrderId();
+		}
+		this.id.setGame(game);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

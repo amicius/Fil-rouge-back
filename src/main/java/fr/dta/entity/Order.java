@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order")
+@Table(name = "order_")
 @SequenceGenerator(name = "order_seq")
 public class Order {
 
