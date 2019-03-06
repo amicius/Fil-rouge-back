@@ -38,14 +38,27 @@ public class User extends UserLight {
 	}
 
 	public User(String username, String password, Credential credential) {
+		super(null, username, password, credential);
+	}
 
-		super(username, password, credential);
+	public User(Integer id, String username, String password, Credential credential) {
+		super(id, username, password, credential);
 	}
 
 	public User(String username, String password, Credential credential, String firstname, String lastname,
 			String adress, String phone, String email, Date birthday) {
+		super(null, username, password, credential);
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.adress = adress;
+		this.phone = phone;
+		this.email = email;
+		this.birthday = birthday;
+	}
 
-		super(username, password, credential);
+	public User(Integer id, String username, String password, Credential credential, String firstname, String lastname,
+			String adress, String phone, String email, Date birthday) {
+		super(id, username, password, credential);
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.adress = adress;
@@ -104,7 +117,7 @@ public class User extends UserLight {
 
 	public UserLight toUserLight() {
 
-		return new UserLight(this.getUsername(), this.getPassword(), this.getCredential());
+		return new UserLight(this.getId(), this.getUsername(), this.getPassword(), this.getCredential());
 	}
 
 	@Override

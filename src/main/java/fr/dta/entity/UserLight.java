@@ -28,11 +28,19 @@ public class UserLight {
 		super();
 	}
 
-	public UserLight(String username, String password, Credential credential) {
-		super();
+	public UserLight(Integer id, String username, String password, Credential credential) {
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.credential = credential;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Credential getCredential() {
