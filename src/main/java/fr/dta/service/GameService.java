@@ -3,6 +3,7 @@ package fr.dta.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import fr.dta.entity.Game;
@@ -27,7 +28,7 @@ public class GameService {
 		return gameRepository.save(game);
 	}
 
-	// @PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<GamePaging> findGames(int page, PostGame game) {
 
 		GamePaging foundGame = gameRepositoryImpl.findGames(page, game);
@@ -37,16 +38,19 @@ public class GameService {
 		return ResponseEntity.badRequest().build();
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public Game update(Game game) {
 
 		return gameRepository.save(game);
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public void delete(int id) {
 
 		gameRepository.deleteById(id);
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public Game activateDeactivateGame(Game game) {
 
 		game.setActive(!game.getActive());

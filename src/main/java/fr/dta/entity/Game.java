@@ -1,9 +1,11 @@
 package fr.dta.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,7 +33,11 @@ public class Game extends GameLight {
 	@Column
 	private boolean active;
 
+	@OneToMany(mappedBy = "id.game")
+	private List<GameOrder> gameOrder;
+
 	public Game() {
+		super();
 	}
 
 	public Game(String name, Plateform plateform, Genre genre, long price, String image, String description, int stock,
@@ -107,5 +113,65 @@ public class Game extends GameLight {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public List<GameOrder> getGameOrder() {
+		return gameOrder;
+	}
+
+	public void setGameOrder(List<GameOrder> gameOrder) {
+		this.gameOrder = gameOrder;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + (active ? 1231 : 1237);
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((editor == null) ? 0 : editor.hashCode());
+		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
+		result = prime * result + ((image == null) ? 0 : image.hashCode());
+		result = prime * result + stock;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Game other = (Game) obj;
+		if (active != other.active)
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (editor == null) {
+			if (other.editor != null)
+				return false;
+		} else if (!editor.equals(other.editor))
+			return false;
+		if (genre != other.genre)
+			return false;
+		if (image == null) {
+			if (other.image != null)
+				return false;
+		} else if (!image.equals(other.image))
+			return false;
+		if (stock != other.stock)
+			return false;
+		return true;
 	}
 }
