@@ -44,4 +44,9 @@ public class UserController {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userService.save(user);	
 	}
+	
+	@PostMapping("/user")
+	public ResponseEntity<User> findUserByUsername(@RequestBody String username) {
+		return userService.findUserByUsername(username);
+	}
 }
