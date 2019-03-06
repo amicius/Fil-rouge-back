@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "game")
 public class Game extends GameLight {
@@ -33,6 +35,7 @@ public class Game extends GameLight {
 	@Column
 	private boolean active;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.game")
 	private List<GameOrder> gameOrder;
 

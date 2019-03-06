@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.entity.Order;
+import fr.dta.entity.OrderPaging;
 import fr.dta.service.OrderService;
 
 @RestController
@@ -28,5 +30,13 @@ public class OrderController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody @Valid Order order) {
 		orderService.save(order);
+	}
+
+	@PostMapping
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@RequestMapping("/all")
+	public ResponseEntity<OrderPaging> findAllOrders(@RequestBody int page) {
+
+		return orderService.findAllOrders(page);
 	}
 }
