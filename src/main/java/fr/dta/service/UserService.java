@@ -33,16 +33,21 @@ public class UserService {
 	}
 
 	public void save(User user) {
-		
+
 		userRepository.save(user);
 	}
 
 	public ResponseEntity<User> findUserByUsername(String username) {
-		
+
 		if (this.userRepository.findByUsername(username) != null) {
 			User foundUser = this.userRepository.findByUsername(username);
-				return new ResponseEntity<>(foundUser, HttpStatus.OK);
+			return new ResponseEntity<>(foundUser, HttpStatus.OK);
 		}
 		return ResponseEntity.badRequest().build();
+	}
+
+	public User update(User user) {
+
+		return userRepository.save(user);
 	}
 }
