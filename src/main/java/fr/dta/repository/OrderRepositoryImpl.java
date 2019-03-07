@@ -51,7 +51,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 		return foundOrders;
 	}
 
-	public OrderPaging findOrdersRegister(Integer page, PostOrder order) {
+	public OrderPaging findAllOrders(Integer page, PostOrder order) {
 
 		OrderPaging foundGames;
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();

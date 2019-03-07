@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dta.dto.OrderPaging;
+import fr.dta.dto.PostOrder;
 import fr.dta.entity.Order;
 import fr.dta.service.OrderService;
 
@@ -35,10 +36,19 @@ public class OrderController {
 
 	@PostMapping
 	@PreAuthorize("hasAuthority('REGISTER')")
-	@RequestMapping("/all")
+	@RequestMapping("/myorders")
 	public ResponseEntity<OrderPaging> findAllOrdersByUserId(HttpServletRequest request, @RequestBody Integer id) {
 
 		Integer page = Integer.parseInt(request.getHeader("page"));
 		return orderService.findAllOrdersByUserId(page, id);
+	}
+
+	@PostMapping
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@RequestMapping("/all")
+	public ResponseEntity<OrderPaging> findAllOrders(HttpServletRequest request, @RequestBody PostOrder order) {
+
+		Integer page = Integer.parseInt(request.getHeader("page"));
+		return orderService.findAllOrders(page, order);
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import fr.dta.dto.OrderPaging;
+import fr.dta.dto.PostOrder;
 import fr.dta.entity.Game;
 import fr.dta.entity.Order;
 import fr.dta.repository.GameRepository;
@@ -40,6 +41,15 @@ public class OrderService {
 	public ResponseEntity<OrderPaging> findAllOrdersByUserId(int page, Integer id) {
 
 		OrderPaging foundOrder = orderRepositoryImpl.findAllOrdersByUserId(page, id);
+		if (foundOrder != null) {
+			return new ResponseEntity<>(foundOrder, HttpStatus.OK);
+		}
+		return ResponseEntity.badRequest().build();
+	}
+
+	public ResponseEntity<OrderPaging> findAllOrders(Integer page, PostOrder order) {
+
+		OrderPaging foundOrder = orderRepositoryImpl.findAllOrders(page, order);
 		if (foundOrder != null) {
 			return new ResponseEntity<>(foundOrder, HttpStatus.OK);
 		}
