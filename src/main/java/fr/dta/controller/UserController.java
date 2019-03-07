@@ -43,7 +43,7 @@ public class UserController {
 		return ResponseEntity.badRequest().build();
 	}
 
-	@GetMapping("/logout")
+	@GetMapping("/user/logout")
 	public void logout(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		if (request.isRequestedSessionIdValid() && session != null) {
