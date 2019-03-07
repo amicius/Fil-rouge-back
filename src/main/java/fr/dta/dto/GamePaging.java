@@ -1,6 +1,8 @@
-package fr.dta.entity;
+package fr.dta.dto;
 
 import java.util.List;
+
+import fr.dta.entity.Game;
 
 public class GamePaging {
 

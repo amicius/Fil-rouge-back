@@ -1,4 +1,7 @@
-package fr.dta.entity;
+package fr.dta.dto;
+
+import fr.dta.entity.Genre;
+import fr.dta.entity.Plateform;
 
 public class PostGame {
 

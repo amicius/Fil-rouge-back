@@ -1,5 +1,6 @@
 package fr.dta.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.dta.dto.OrderPaging;
 import fr.dta.entity.Order;
-import fr.dta.entity.OrderPaging;
 import fr.dta.service.OrderService;
 
 @RestController
@@ -33,10 +34,11 @@ public class OrderController {
 	}
 
 	@PostMapping
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('REGISTER')")
 	@RequestMapping("/all")
-	public ResponseEntity<OrderPaging> findAllOrders(@RequestBody int page) {
+	public ResponseEntity<OrderPaging> findAllOrdersByUserId(HttpServletRequest request, @RequestBody Integer id) {
 
-		return orderService.findAllOrders(page);
+		Integer page = Integer.parseInt(request.getHeader("page"));
+		return orderService.findAllOrdersByUserId(page, id);
 	}
 }

@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+import fr.dta.dto.GamePaging;
+import fr.dta.dto.PostGame;
 import fr.dta.entity.Game;
-import fr.dta.entity.GamePaging;
-import fr.dta.entity.PostGame;
 import fr.dta.repository.GameRepository;
 import fr.dta.repository.GameRepositoryImpl;
 

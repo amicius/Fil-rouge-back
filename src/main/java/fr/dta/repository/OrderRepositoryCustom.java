@@ -1,8 +1,8 @@
 package fr.dta.repository;
 
-import fr.dta.entity.OrderPaging;
+import fr.dta.dto.OrderPaging;
 
 public interface OrderRepositoryCustom {
 
-	OrderPaging findAllOrders(int start);
+	OrderPaging findAllOrdersByUserId(int start, Integer id);
 }

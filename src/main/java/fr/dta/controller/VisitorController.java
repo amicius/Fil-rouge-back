@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.dta.entity.GamePaging;
-import fr.dta.entity.PostGame;
+import fr.dta.dto.GamePaging;
+import fr.dta.dto.PostGame;
 import fr.dta.service.GameService;
 
 @RestController

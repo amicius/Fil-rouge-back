@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and().authorizeRequests()
+				.antMatchers("/h2-console/**").permitAll().and().authorizeRequests()
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().and().authorizeRequests().antMatchers("/game")
 				.authenticated().and().csrf().disable().httpBasic();
 	}

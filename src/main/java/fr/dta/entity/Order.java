@@ -33,16 +33,20 @@ public class Order {
 	@Column
 	private Date orderDate;
 
+	@Column
+	private Integer totalPrice;
+
 	public Order() {
 		super();
 	}
 
-	public Order(Integer id, User user, List<GameOrder> games, Date orderDate) {
+	public Order(Integer id, User user, List<GameOrder> games, Date orderDate, Integer totalPrice) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.games = games;
 		this.orderDate = orderDate;
+		this.totalPrice = totalPrice;
 	}
 
 	public Order(User user, List<GameOrder> games, Date orderDate) {
@@ -84,6 +88,14 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
+	public Integer getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Integer totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +103,7 @@ public class Order {
 		result = prime * result + ((games == null) ? 0 : games.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((orderDate == null) ? 0 : orderDate.hashCode());
+		result = prime * result + ((totalPrice == null) ? 0 : totalPrice.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -118,6 +131,11 @@ public class Order {
 			if (other.orderDate != null)
 				return false;
 		} else if (!orderDate.equals(other.orderDate))
+			return false;
+		if (totalPrice == null) {
+			if (other.totalPrice != null)
+				return false;
+		} else if (!totalPrice.equals(other.totalPrice))
 			return false;
 		if (user == null) {
 			if (other.user != null)

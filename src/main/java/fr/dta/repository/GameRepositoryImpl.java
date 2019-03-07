@@ -12,9 +12,9 @@ import org.springframework.data.jpa.repository.JpaContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
+import fr.dta.dto.GamePaging;
+import fr.dta.dto.PostGame;
 import fr.dta.entity.Game;
-import fr.dta.entity.GamePaging;
-import fr.dta.entity.PostGame;
 
 @Repository
 public class GameRepositoryImpl implements GameRepositoryCustom {
