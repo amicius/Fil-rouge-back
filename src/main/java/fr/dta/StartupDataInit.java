@@ -34,6 +34,7 @@ public class StartupDataInit {
 		userRepository.save(new User("admin", passwordEncoder.encode("admin"), Credential.ADMIN));
 		userRepository.save(new User("register", passwordEncoder.encode("register"), Credential.REGISTER));
 
+		
 		// jeux PSX
 		
 		gameService.save(new Game("Tekken 3", Plateform.PLAYSTATION, Genre.ARCADE, 11,
@@ -142,7 +143,6 @@ public class StartupDataInit {
 				"http://image.jeuxvideo.com/images-sm/ns/s/s/ssodns0f.jpg", "Mike Tyson's Punch-Out!! est un jeu vidéo sorti sur Nintendo Entertainment System (NES) en 1987, puis ressorti sous le nom de Punch-Out!! featuring Mr. Dream en 1990. Ce jeu est basé sur le jeu d'arcade Punch-Out!! sorti en 1983.", 5, "Nintendo",
 				new Date(), true));
 		
-		
-		
+	
 	}
 }

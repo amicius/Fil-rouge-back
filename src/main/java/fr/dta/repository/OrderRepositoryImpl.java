@@ -57,24 +57,34 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Order> query = builder.createQuery(Order.class);
 		Root<Order> root = query.from(Order.class);
+		Join<Order, User> userJoin = root.join("user");
 
 		Predicate firstnamePredicate = builder.and();
 		Predicate lastnamePredicate = builder.and();
 		Predicate numeroPredicate = builder.and();
+		Predicate startDatePredicate = builder.and();
+		Predicate endDatePredicate = builder.and();
 
 		if (!StringUtils.isEmpty(order.getFirstname())) {
-			firstnamePredicate = builder.like(builder.upper(root.get("user.firstname")),
-					"%" + order.getFirstname().toUpperCase() + "%");
+			firstnamePredicate = builder.equal(builder.upper(userJoin.get("firstname")), order.getFirstname());
 		}
 		if (!StringUtils.isEmpty(order.getLastname())) {
-			lastnamePredicate = builder.like(builder.upper(root.get("user.lastname")),
-					"%" + order.getLastname().toUpperCase() + "%");
+			lastnamePredicate = builder.equal(builder.upper(userJoin.get("lastname")), order.getLastname());
 		}
-		if (!StringUtils.isEmpty(order.getNumeroClient())) {
-			numeroPredicate = builder.equal(builder.upper(root.get("numeroClient")), order.getNumeroClient());
+		if (!StringUtils.isEmpty(order.getOrderNum())) {
+			numeroPredicate = builder.equal(builder.upper(root.get("id")), order.getOrderNum());
+		}
+		if (!StringUtils.isEmpty(order.getStartDate())) {
+			startDatePredicate = builder.greaterThanOrEqualTo(builder.upper(root.get("orderDate")),
+					"%" + order.getStartDate() + "%");
+		}
+		if (!StringUtils.isEmpty(order.getEndDate())) {
+			endDatePredicate = builder.lessThanOrEqualTo(builder.upper(root.get("orderDate")),
+					"%" + order.getEndDate() + "%");
 		}
 
-		query.where(builder.and(firstnamePredicate, lastnamePredicate, numeroPredicate));
+		query.where(builder.and(firstnamePredicate, lastnamePredicate, numeroPredicate, startDatePredicate,
+				endDatePredicate));
 
 		TypedQuery<Order> orderQuery = entityManager.createQuery(query);
 		int pages = orderQuery.getResultList().size();
