@@ -108,10 +108,6 @@ public class StartupDataInit {
 				"http://www.thecoverproject.net/images/covers/gb_tetris_thumb.jpg", "Tetris est un jeu vidéo de puzzle conçu par Alekseï Pajitnov à partir de juin 1984 sur Elektronika 60.", 5, "Alekseï Pajitnov",
 				new Date(), true));
 		
-		gameService.save(new Game("Pokémon version jaune", Plateform.GAMEBOY, Genre.AVENTURE, 13,
-				"http://www.thecoverproject.net/images/covers/gb_pokemonyellow_5_thumb.jpg", "Pokémon version jaune : édition spéciale Pikachu (Poketto Monsutā Pikachū, lit. Pocket Monsters Pikachu), couramment appelé Pokémon Jaune est un jeu vidéo de rôle japonais de la licence Pokémon développé par Game Freak sous la direction de Satoshi Tajiri.", 5, "Nintendo",
-				new Date(), true));
-		
 		gameService.save(new Game("Pokémon version jaune", Plateform.GAMEBOY, Genre.RPG, 13,
 				"http://www.thecoverproject.net/images/covers/gb_pokemonyellow_5_thumb.jpg", "Pokémon version jaune : édition spéciale Pikachu (Poketto Monsutā Pikachū, lit. Pocket Monsters Pikachu), couramment appelé Pokémon Jaune est un jeu vidéo de rôle japonais de la licence Pokémon développé par Game Freak sous la direction de Satoshi Tajiri.", 5, "Nintendo",
 				new Date(), true));
@@ -128,7 +124,7 @@ public class StartupDataInit {
 		
 		
 		gameService.save(new Game("Probotector", Plateform.NES, Genre.ARCADE, 11,
-				"http://www.thecoverproject.net/images/covers/genesis_contrahardcorps_eu_thumb.jpg", "Probotector, ou Gryzor selon les versions, plus connu sous le nom Contra hors-europe, est un jeu vidéo d'action de type shoot'n jump, développé et édité par Konami, sorti initialement en 1987 sur borne d'arcade.", 5, "Konami",
+				"https://i.ytimg.com/vi/SsfhLepj4Ck/hqdefault.jpg", "Probotector, ou Gryzor selon les versions, plus connu sous le nom Contra hors-europe, est un jeu vidéo d'action de type shoot'n jump, développé et édité par Konami, sorti initialement en 1987 sur borne d'arcade.", 5, "Konami",
 				new Date(), true));
 		
 		gameService.save(new Game("Kirby's Adventure", Plateform.NES, Genre.AVENTURE, 13,
