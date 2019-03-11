@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -63,6 +64,13 @@ public class GameController {
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public Game activateDeactivateGame(@RequestBody Game game) {
 
-		return this.gameService.activateDeactivateGame(game);
+		return gameService.activateDeactivateGame(game);
+	}
+
+	@GetMapping
+	public Game findOneGame(HttpServletRequest request) {
+
+		String name = request.getHeader("name");
+		return gameService.findOneGame(name);
 	}
 }

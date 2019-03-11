@@ -74,4 +74,9 @@ public class GameService {
 		}
 		return ResponseEntity.badRequest().build();
 	}
+
+	public Game findOneGame(String name) {
+
+		return gameRepository.findByName(name);
+	}
 }

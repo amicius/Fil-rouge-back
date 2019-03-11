@@ -8,4 +8,5 @@ public interface GameRepository extends JpaRepository<Game, Integer> {
 
 	Game findByActive(boolean active);
 
+	Game findByName(String name);
 }
